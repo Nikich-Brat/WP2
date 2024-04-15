@@ -1,4 +1,4 @@
-import { IPlace } from "../../types/@types";
+import { IPlace } from "../../types/index";
 
 export const WholeWeather: IPlace[] = [
   {

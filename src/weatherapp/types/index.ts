@@ -1,1 +1,1 @@
-export type { IWeather, IPlace } from "./@types";
+export type { IWeather, IPlace, PlaceList } from "./@types";

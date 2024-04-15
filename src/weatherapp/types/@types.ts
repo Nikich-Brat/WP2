@@ -12,3 +12,8 @@ export interface IPlace {
   time: Date;
   id: number;
 }
+
+export interface PlaceList {
+  value: string;
+  label: string;
+}

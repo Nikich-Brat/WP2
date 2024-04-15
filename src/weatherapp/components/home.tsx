@@ -13,9 +13,13 @@ import { ThemeInit, ThemeChanger } from "./theme";
 import { CityChanger } from "./Places";
 
 export const WeatherPrediction = () => {
-  const [theme, setTheme] = useState<string>(localStorage.theme);
+  const [theme, setTheme] = useState<string>(
+    localStorage.place ? localStorage.theme : "light",
+  );
+  const [city, setCity] = useState<number>(
+    localStorage.place ? localStorage.place : (localStorage.place = 0),
+  );
   const [interval, setInterval] = useState<number>(0);
-  const [city, setCity] = useState<string>("Минск");
 
   useEffect(() => {
     ThemeInit((text: string) => setTheme(text));
@@ -48,7 +52,7 @@ export const WeatherPrediction = () => {
               <p>Язык: RU</p>
             </article>
           </div>
-          <CityChanger city={city} setCity={setCity} />
+          <CityChanger setCity={setCity} />
         </div>
 
         <div className="w-full h-auto flex flex-col dark:bg-neutral-800 dark:text-neutral-200 bg-neutral-200 text-neutral-800 lg:flex-row md:flex-col sm:flex-col">
