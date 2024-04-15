@@ -2,7 +2,6 @@ import React, { Dispatch, SetStateAction } from "react";
 
 import type { MenuProps } from "antd";
 import { Dropdown, Space, ConfigProvider, theme } from "antd";
-import { AlignJustify, SlidersHorizontal, UserPlus, Users } from "lucide-react";
 
 export const CityChanger = ({
   city,
