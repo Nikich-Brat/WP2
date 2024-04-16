@@ -10,16 +10,21 @@ import {
 } from "lucide-react";
 import ImCloud from "../constants/Images/Cloud.png";
 import { ThemeInit, ThemeChanger } from "./theme";
-import { CityChanger } from "./Places";
+import { CityChanger } from "./SelectPlace";
+import { GetPredictPanel } from "./PeriodPrediction";
 
 export const WeatherPrediction = () => {
   const [theme, setTheme] = useState<string>(
-    localStorage.place ? localStorage.theme : "light",
+    localStorage.theme ? localStorage.theme : "light",
   );
   const [city, setCity] = useState<number>(
     localStorage.place ? localStorage.place : (localStorage.place = 0),
   );
-  const [interval, setInterval] = useState<number>(0);
+  const [interval, setInterval] = useState<string>(
+    localStorage.interval
+      ? localStorage.interval
+      : (localStorage.interval = "Day"),
+  );
 
   useEffect(() => {
     ThemeInit((text: string) => setTheme(text));
@@ -52,7 +57,7 @@ export const WeatherPrediction = () => {
               <p>Язык: RU</p>
             </article>
           </div>
-          <CityChanger setCity={setCity} />
+          <CityChanger setCity={(text: number) => setCity(text)} />
         </div>
 
         <div className="w-full h-auto flex flex-col dark:bg-neutral-800 dark:text-neutral-200 bg-neutral-200 text-neutral-800 lg:flex-row md:flex-col sm:flex-col">
@@ -96,7 +101,7 @@ export const WeatherPrediction = () => {
             </div>
             <div className="h-auto w-auto flex justify-end">
               <Image
-                className="h-48 w-48"
+                className="absolute h-48 w-48 opacity-20"
                 src={ImCloud}
                 alt="menutab"
                 priority
@@ -105,41 +110,11 @@ export const WeatherPrediction = () => {
           </div>
         </div>
 
-        <div className="w-full h-auto flex flex-col dark:bg-neutral-800 dark:text-neutral-200 bg-neutral-200 text-neutral-800">
-          <div className="w-full mb-1 h-auto flex-col flex lg:flex-row md:flex-col sm:flex-col">
-            <button
-              type="button"
-              className="border-2 border-neutral-300 dark:border-neutral-700 transition-all duration-500 h-full m-1 p-1 dark:bg-neutral-700  dark:text-neutral-300 bg-neutral-300 text-neutral-700 rounded-full dark:hover:bg-neutral-300  dark:hover:text-neutral-700 hover:bg-neutral-700 hover:text-neutral-300 hover:text-base sm:w-full md:w-full lg:w-auto"
-            >
-              на день
-            </button>
-            <button
-              type="button"
-              className="border-2 border-neutral-300 dark:border-neutral-700 transition-all duration-500 h-full m-1 p-1 dark:bg-neutral-700  dark:text-neutral-300 bg-neutral-300 text-neutral-700 rounded-full dark:hover:bg-neutral-300  dark:hover:text-neutral-700 hover:bg-neutral-700 hover:text-neutral-300 hover:text-base sm:w-full md:w-full lg:w-auto"
-            >
-              на неделю
-            </button>
-            <button
-              type="button"
-              className="border-2 border-neutral-300 dark:border-neutral-700 transition-all duration-500 h-full m-1 p-1 dark:bg-neutral-700  dark:text-neutral-300 bg-neutral-300 text-neutral-700 rounded-full dark:hover:bg-neutral-300  dark:hover:text-neutral-700 hover:bg-neutral-700 hover:text-neutral-300 hover:text-base sm:w-full md:w-full lg:w-auto"
-            >
-              на месяц
-            </button>
-          </div>
-          <div className="w-full h-auto flex flex-wrap">
-            <div className="h-40 flex-1 min-w-40 rounded-md dark:bg-neutral-600 bg-neutral-400 transition-all duration-500 m-1 p-1 dark:hover:bg-neutral-400 dark:hover:text-neutral-600 hover:bg-neutral-600 hover:text-neutral-400">
-              <ul>
-                <li>место:</li>
-                <li>погода:</li>
-                <li>температура:</li>
-                <li>влажность: %</li>
-                <li>давление: мм.рт.ст</li>
-                <li>скорость ветра: м/с</li>
-                <li>время: :00</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <GetPredictPanel
+          city={city}
+          interval={interval}
+          setInterval={(text: string) => setInterval(text)}
+        />
       </div>
     </div>
   );

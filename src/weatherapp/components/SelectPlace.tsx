@@ -1,13 +1,11 @@
 import React, { Dispatch, SetStateAction } from "react";
-
-import type { MenuProps } from "antd";
-import { Select, Dropdown, Space, ConfigProvider, theme } from "antd";
+import { Select, ConfigProvider, theme } from "antd";
 import { placelist } from "../constants/weatherstek/placeslist";
 
 export const CityChanger = ({
   setCity,
 }: {
-  setCity: Dispatch<SetStateAction<number>>;
+  setCity: (text: number) => void;
 }) => {
   const onChange = (value: string) => {
     setCity(+value);
