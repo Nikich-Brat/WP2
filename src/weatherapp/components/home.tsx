@@ -15,15 +15,13 @@ import { GetPredictPanel } from "./PeriodPrediction";
 
 export const WeatherPrediction = () => {
   const [theme, setTheme] = useState<string>(
-    localStorage.theme ? localStorage.theme : "light",
+    typeof localStorage === "undefined" ? "light" : localStorage.theme,
   );
   const [city, setCity] = useState<number>(
-    localStorage.place ? localStorage.place : (localStorage.place = 0),
+    typeof localStorage === "undefined" ? 0 : localStorage.city,
   );
   const [interval, setInterval] = useState<string>(
-    localStorage.interval
-      ? localStorage.interval
-      : (localStorage.interval = "Day"),
+    typeof localStorage === "undefined" ? "Day" : localStorage.interval,
   );
 
   useEffect(() => {
@@ -31,9 +29,11 @@ export const WeatherPrediction = () => {
   }, []);
 
   if (theme === "light") {
-    document.documentElement.classList.remove("dark");
-    document.documentElement.classList.add("light");
-  } else {
+    if (typeof document !== "undefined") {
+      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.add("light");
+    }
+  } else if (typeof document !== "undefined") {
     document.documentElement.classList.remove("light");
     document.documentElement.classList.add("dark");
   }
@@ -57,7 +57,10 @@ export const WeatherPrediction = () => {
               <p>Язык: RU</p>
             </article>
           </div>
-          <CityChanger setCity={(text: number) => setCity(text)} />
+          <CityChanger
+            themenow={theme}
+            setCity={(text: number) => setCity(text)}
+          />
         </div>
 
         <div className="w-full h-auto flex flex-col dark:bg-neutral-800 dark:text-neutral-200 bg-neutral-200 text-neutral-800 lg:flex-row md:flex-col sm:flex-col">
@@ -111,6 +114,7 @@ export const WeatherPrediction = () => {
         </div>
 
         <GetPredictPanel
+          theme={theme}
           city={city}
           interval={interval}
           setInterval={(text: string) => setInterval(text)}

@@ -1,10 +1,12 @@
 import { PlacePredictPanel } from "./PlacePredictPanel";
 
 export const GetPredictPanel = ({
+  theme,
   city,
   interval,
   setInterval,
 }: {
+  theme: string;
   city: number;
   interval: string;
   setInterval: (text: string) => void;

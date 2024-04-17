@@ -3,8 +3,10 @@ import { Select, ConfigProvider, theme } from "antd";
 import { placelist } from "../constants/weatherstek/placeslist";
 
 export const CityChanger = ({
+  themenow,
   setCity,
 }: {
+  themenow: string;
   setCity: (text: number) => void;
 }) => {
   const onChange = (value: string) => {
@@ -27,9 +29,7 @@ export const CityChanger = ({
       <ConfigProvider
         theme={{
           algorithm:
-            localStorage.theme === "dark"
-              ? theme.darkAlgorithm
-              : theme.defaultAlgorithm,
+            themenow === "dark" ? theme.darkAlgorithm : theme.defaultAlgorithm,
         }}
       >
         <Select
@@ -38,7 +38,9 @@ export const CityChanger = ({
           optionFilterProp="children"
           onChange={onChange}
           onSearch={onSearch}
-          defaultValue={localStorage.place}
+          defaultValue={
+            typeof localStorage === "undefined" ? "0" : localStorage.place
+          }
           filterOption={filterOption}
           options={placelist}
         />
