@@ -39,11 +39,11 @@ export const ThemeChanger = ({
   if (theme === "dark") {
     return (
       <div
-        className="rounded-full hover:bg-blue-300 dark:hover:bg-neutral-900 transition-all duration-300 h-20 w-20 p-1"
+        className="rounded-full bg-neutral-200 dark:bg-neutral-800 hover:bg-blue-300 dark:hover:bg-neutral-900 transition-all duration-300 h-20 w-20 p-1"
         onClick={onClick}
       >
         <Image
-          className="rounded-full h-full w-full bg-blue-300 hover:bg-neutral-900"
+          className="rounded-full h-full w-full bg-blue-300 dark:bg-neutral-900 hover:bg-blue-300 dark:hover:bg-neutral-900"
           src={ImNightMode}
           alt="menutab"
         />
@@ -52,11 +52,11 @@ export const ThemeChanger = ({
   }
   return (
     <div
-      className="rounded-full hover:bg-blue-300 dark:hover:bg-neutral-900 transition-all duration-300 h-20 w-20 p-1"
+      className="rounded-full bg-neutral-200 dark:bg-neutral-800 hover:bg-blue-300 dark:hover:bg-neutral-900 transition-all duration-300 h-20 w-20 p-1"
       onClick={onClick}
     >
       <Image
-        className="rounded-full h-full w-full bg-blue-300 dark:hover:bg-neutral-900"
+        className="rounded-full h-full w-full bg-blue-300 dark:bg-neutral-900 hover:bg-blue-300 dark:hover:bg-neutral-900"
         src={ImDayMode}
         alt="menutab"
       />

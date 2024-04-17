@@ -6,11 +6,17 @@ export interface IWeather {
   id: number;
 }
 
-export interface IPlace {
+
+export interface IDate {
   weather: IWeather[];
-  place: string;
-  time: Date;
+  byTime: Date;
   id: number;
+}
+
+export interface IPlace {
+  Date:IDate[];
+  place: string;
+  id:number;
 }
 
 export interface PlaceList {

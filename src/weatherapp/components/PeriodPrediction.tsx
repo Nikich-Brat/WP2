@@ -1,4 +1,6 @@
-import { PlacePredictPanel } from "./PlacePredictPanel";
+import { PlacePredictPanelDay } from "./PlacePredictPanel";
+// import { PlacePredictPanelWeek } from "./PlacePredictPanel";
+// import { PlacePredictPanelMonth } from "./PlacePredictPanel";
 
 export const GetPredictPanel = ({
   theme,
@@ -48,7 +50,9 @@ export const GetPredictPanel = ({
           на месяц
         </button>
       </div>
-      <PlacePredictPanel />
+      <div className="w-full h-auto flex flex-wrap">
+        <PlacePredictPanelDay interval={interval}/>
+      </div>
     </div>
   );
 };
