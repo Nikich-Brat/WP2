@@ -11,7 +11,14 @@ export interface IDate {
   weather: IWeather[];
   byTime: Date;
   id: number;
+  getaveragetemprature(): void;
+  getaveragepressure(): void;    
+  getaveragehumidity(): void;
+  getaveragewindspeed(): void;    
+
 }
+
+
 
 export interface IPlace {
   Date:IDate[];
