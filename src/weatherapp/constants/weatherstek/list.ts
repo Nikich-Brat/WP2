@@ -6390,7 +6390,7 @@ export const WholeWeather: IPlace[] = [
         },
       },
     ],
-    place: "Minsk",
+    place: "Минск",
     id: 0,
   },
   {

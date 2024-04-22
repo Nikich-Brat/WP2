@@ -11,7 +11,7 @@ export const CityChanger = ({
 }) => {
   const onChange = (value: string) => {
     setCity(+value);
-    localStorage.place = value;
+    localStorage.city = value;
   };
 
   const onSearch = (value: string) => {
@@ -24,7 +24,7 @@ export const CityChanger = ({
   ) => (option?.label ?? "").toLowerCase().includes(input.toLowerCase());
 
   return (
-    <article className="flex flex-col justify-start content-center items-center">
+    <article className="flex flex-col content-center items-center">
       <h1>Выбрать город</h1>
       <ConfigProvider
         theme={{
@@ -33,13 +33,14 @@ export const CityChanger = ({
         }}
       >
         <Select
+          className="w-full lg:w-auto md:w-full sm:w-full"
           showSearch
-          placeholder="Select a person"
-          optionFilterProp="children"
+          placeholder="Выберите город"
+          optionFilterProp="город"
           onChange={onChange}
           onSearch={onSearch}
           defaultValue={
-            typeof localStorage === "undefined" ? "0" : localStorage.place
+            typeof localStorage === "undefined" ? "0" : localStorage.city
           }
           filterOption={filterOption}
           options={placelist}
