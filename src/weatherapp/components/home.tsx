@@ -12,20 +12,24 @@ import { MainPanelGeneralCharacteristics } from "./mainpanel";
 export const WeatherPrediction = () => {
   let currentmoment = (new Date);
   let currentminute = (new Date).getMinutes();
+
   const [theme, setTheme] = useState<string>(
     typeof localStorage === "undefined" ? "light" : localStorage.theme,
   );
+
   const [city, setCity] = useState<number>(
     typeof localStorage === "undefined" ? 0 : localStorage.city,
   );
+
   const [interval, setInterval] = useState<string>(
     typeof localStorage === "undefined" ? "Day" : localStorage.interval,
   );
+
   const [timepoint, setTimepoint] = useState<Date>(currentmoment);
 
   useEffect(() => {
     ThemeInit((text: string) => setTheme(text));
-    DoUpdate();
+    DoUpdate;
   }, []);
 
   if (theme === "light") {

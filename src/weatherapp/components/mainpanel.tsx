@@ -10,7 +10,7 @@ export const MainPanelCurrCharacteristics = ({city}:{city:number}) =>{
     return(
  <div className="h-full w-auto flex flex-col">
 <ul>
-  <h1 className="text-base font-bold p-1">
+  <h1 className="te xt-base font-bold p-1">
     Дополнительные характеристики
   </h1>
   <li className="flex flex-row whitespace-nowrap p-1">
@@ -47,7 +47,7 @@ export const MainPanelGeneralCharacteristics = ({city,currmom}:{city:number;curr
           <p>Погода: солнечно</p>
           <p>Дата: {String(currmom.getFullYear())}.{String(currmom.getMonth())}.{String(currmom.getDay())}</p>
           <p>Время: {String(currmom.getHours())}:{String(currmom.getMinutes())}</p>
-          <p>Место: {city}</p>
+          <p>Место: {WholeWeather[city].place}</p>
         </div>
       </div>  
     ) 
